@@ -1,54 +1,46 @@
 {% set name = "pydaily" %}
-{% set version = "0.4.2" %}
-
+{% set version = "0.4.4" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 250870fc577b09056f086114fe9c295850675814e566f64ecac92afe6ab602fc
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pydaily-{{ version }}.tar.gz
+  sha256: 081bf3b4104d797c30620956e588717edbe42d9a077ababb4c393f5fa8dbb224
 
 build:
-  number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 0
 
-# run dependencies are being installed in host because of 
-# https://github.com/PingjunChen/pydaily/blob/master/setup.py#L5, 
-# which is **NOT** recommended practice
 requirements:
   host:
+    - python
     - pip
-    - python >=3.6
-    - deepdish
-    - numpy 
-    - opencv 
-    - pandas
-    - scikit-image
+    - setuptools
   run:
-    - deepdish
-    - numpy 
-    - opencv 
-    - pandas
-    - scikit-image
-    - python >=3.6
+    - python
+    - numpy >=1.20.0
+    - opencv >=4.4.0.40
+    - scikit-image >=0.18.0
+    - pandas >=1.2.0
+    - deepdish >=0.3.6
 
 test:
   imports:
     - pydaily
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/PingjunChen/pydaily
-  license: Apache-2.0
   summary: Daily python utility functions.
-  license_family: Apache
+  license: Apache-2.0
   license_file: LICENSE
-  summary: "Python daily utilities"
-  doc_url: "https://pydaily.readthedocs.io/en/latest/"
-  dev_url: "https://pydaily.readthedocs.io/en/latest/"
 
 extra:
   recipe-maintainers:
-    - sarthakpati
+    - AddYourGitHubIdHere
