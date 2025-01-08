@@ -26,8 +26,11 @@ requirements:
     - scikit-image >=0.18.0
     - pandas >=1.2.0
     - deepdish >=0.3.6
+    - setuptools
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - pydaily
   commands:
