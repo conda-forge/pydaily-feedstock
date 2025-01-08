@@ -27,6 +27,7 @@ requirements:
     - opencv 
     - pandas
     - scikit-image
+    - setuptools
   run:
     - deepdish
     - numpy 
