@@ -44,6 +44,8 @@ about:
   summary: Daily python utility functions.
   license: Apache-2.0
   license_file: LICENSE
+  doc_url: "https://pydaily.readthedocs.io/en/latest/"
+  dev_url: "https://pydaily.readthedocs.io/en/latest/"
 
 extra:
   recipe-maintainers:
